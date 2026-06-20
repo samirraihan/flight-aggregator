@@ -46,3 +46,4 @@ public/vendor/
 /.docker/data/
 
 laradumps.yaml
+!/storage/app/private/providers/*.json
