@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "47f051e5-88f7-4118-b23c-cd0b0875feb3",
+    "name": "Flight Aggregator API Documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26306886"
+  },
+  "item": [
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create booking",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"flight_id\":\"85a4989380b4405ff1f80ba17eea8ce4faeb586c\",\r\n   \"passengers\":[\r\n      {\r\n         \"first_name\":\"Samir\",\r\n         \"last_name\":\"Raihan\"\r\n      }\r\n   ]\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ]
+            },
+            "description": "Create a booking using a selected flight."
+          },
+          "response": []
+        },
+        {
+          "name": "Get booking",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/:reference",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                ":reference"
+              ],
+              "variable": [
+                {
+                  "key": "reference",
+                  "value": "BK-6B38FFE915",
+                  "description": "Booking reference."
+                }
+              ]
+            },
+            "description": "Retrieve booking by reference."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flights",
+      "item": [
+        {
+          "name": "Search flights",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"from\":\"DAC\",\r\n   \"to\":\"DXB\",\r\n   \"date\":\"2026-07-01\",\r\n   \"passengers\":2,\r\n   \"sort\":\"price\",\r\n   \"carrier\":\"AA\",\r\n   \"stops\":0,\r\n   \"max_price\":500\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/flights/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flights",
+                "search"
+              ]
+            },
+            "description": "Search and aggregate flights from all providers."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://flight-aggregator.test:8080"
+    }
+  ]
+}
